@@ -1,7 +1,6 @@
-import { Box, Container, Stack, Tab, useTheme } from "@mui/material";
+import { Box, Container, Stack, Tab, Tabs, useTheme } from "@mui/material";
 import { useRef } from "react";
 
-import { UITabsContainer } from "@/design-system/tabs/tabs";
 import { useScrollspy } from "@/hooks/use-scrollspy";
 import { useSetTitle } from "@/hooks/use-set-title";
 import { AppBarNavigation } from "@/ui/app-bar-navigation";
@@ -14,6 +13,7 @@ function createDummyTab(id: number, itemsCount?: number) {
     id: `spy-section-${id}`,
     label: "Dummy - " + id,
     itemsCount,
+    iconUrl: "https://placehold.co/12",
   };
 }
 
@@ -40,7 +40,7 @@ function HomePageTabsContent({
   const [currentActiveIndex] = useScrollspy(elements.current, {
     // 34 px is the height of the tab bar
     // 55 px is the height of the bottom navigation bar
-    rootMargin: "-34px 0px -55px 0px",
+    rootMargin: "-46px 0px -55px 0px",
   });
 
   function scrollToSection(index: number) {
@@ -59,11 +59,12 @@ function HomePageTabsContent({
         zIndex={100}
         bgcolor={palette.background.default}
       >
-        <UITabsContainer
-          activeTabIndex={currentActiveIndex}
-          setActiveTabIndex={(index) => {
-            scrollToSection(index);
-          }}
+        <Tabs
+          value={currentActiveIndex}
+          variant="scrollable"
+          scrollButtons
+          allowScrollButtonsMobile
+          onChange={(_e, index: number) => scrollToSection(index)}
         >
           {tabs.map((tab) => {
             return (
@@ -71,14 +72,17 @@ function HomePageTabsContent({
                 key={tab.id}
                 disableRipple
                 label={
-                  tab.itemsCount ? (
-                    <Stack
-                      direction="row"
-                      gap={2}
-                      alignItems="center"
-                      justifyContent="center"
-                    >
-                      {tab.label}
+                  <Stack
+                    direction="row"
+                    gap={2}
+                    alignItems="center"
+                    justifyContent="center"
+                  >
+                    {tab.iconUrl && <img src={tab.iconUrl} alt={tab.label} />}
+
+                    {tab.label}
+
+                    {tab.itemsCount && (
                       <Box
                         height={16}
                         px={1}
@@ -91,15 +95,13 @@ function HomePageTabsContent({
                       >
                         {tab.itemsCount}
                       </Box>
-                    </Stack>
-                  ) : (
-                    tab.label
-                  )
+                    )}
+                  </Stack>
                 }
               />
             );
           })}
-        </UITabsContainer>
+        </Tabs>
       </Box>
 
       <Stack px={3} mt={4} pb={4} gap={4} className="spy-section-wrapper">
@@ -116,7 +118,7 @@ function HomePageTabsContent({
             className="spy-section"
             id={`spy-section-${index + 1}`}
             sx={{
-              scrollMargin: "42px",
+              scrollMargin: "60px",
             }}
             display="flex"
             alignItems="center"
