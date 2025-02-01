@@ -144,7 +144,7 @@ export function HomePage() {
       <Box bgcolor={palette.primary.main}>
         <Container>
           <Box pb={6}>
-            <Box mb={6}>
+            <Box mb={4}>
               <AppBarNavigation />
             </Box>
 
