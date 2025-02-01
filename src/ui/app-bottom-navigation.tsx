@@ -5,10 +5,13 @@ import {
   BottomNavigation,
   BottomNavigationItem,
 } from "@/components/navigation/bottom-navigation";
+import { useAuthBottomsheetIsOpenState } from "@/states/auth-bottomsheet-is-open-state";
 
 export function AppBottomNavigation() {
   const location = useLocation();
   const navigate = useNavigate();
+
+  const [_, setAuthBottomsheetIsOpen] = useAuthBottomsheetIsOpenState();
 
   return (
     <BottomNavigation>
@@ -35,7 +38,7 @@ export function AppBottomNavigation() {
       <BottomNavigationItem
         icon={<Person />}
         label="Conta"
-        onClick={() => console.log("Conta")}
+        onClick={() => setAuthBottomsheetIsOpen(true)}
       />
     </BottomNavigation>
   );
