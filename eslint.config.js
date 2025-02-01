@@ -34,12 +34,8 @@ export default tseslint.config(
         "warn",
         { allowConstantExport: true },
       ],
-    },
-  },
-  {
-    rules: {
       "@typescript-eslint/no-unused-vars": [
-        error,
+        "error",
         {
           args: "all",
           argsIgnorePattern: "^_",
@@ -47,10 +43,10 @@ export default tseslint.config(
           caughtErrorsIgnorePattern: "^_",
           destructuredArrayIgnorePattern: "^_",
           varsIgnorePattern: "^_",
-          ignoreRestSiblings: true
-        }
-      ]
-    }
+          ignoreRestSiblings: true,
+        },
+      ],
+    },
   },
   eslintPluginPrettierRecommended,
 );

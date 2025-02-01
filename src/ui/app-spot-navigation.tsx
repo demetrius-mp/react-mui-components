@@ -11,7 +11,7 @@ export function AppSpotNavigation() {
         <SpotNavigationItem
           key={index}
           label={`Item ${index + 1}`}
-          icon={<img src={reactLogo} />}
+          icon={<img height={20} src={reactLogo} />}
         />
       ))}
     </SpotNavigation>

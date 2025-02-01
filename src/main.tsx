@@ -10,6 +10,7 @@ import { BrowserRouter } from "react-router";
 
 import { AppRoutes } from "@/app-routes";
 import { theme } from "@/lib/theme";
+import { BottomsheetsProvider } from "@/ui/bottomsheets/bottomsheets-provider";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -17,7 +18,9 @@ createRoot(document.getElementById("root")!).render(
       <ThemeProvider theme={theme}>
         <CssBaseline />
 
-        <AppRoutes />
+        <BottomsheetsProvider>
+          <AppRoutes />
+        </BottomsheetsProvider>
       </ThemeProvider>
     </BrowserRouter>
   </StrictMode>,
