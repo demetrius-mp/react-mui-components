@@ -44,9 +44,9 @@ export const theme = createTheme({
           minWidth: "unset",
           maxWidth: "unset",
           minHeight: "unset",
-        },
-        selected: {
-          color: "inherit",
+          "&.Mui-selected": {
+            color: "inherit",
+          },
         },
       },
     },
