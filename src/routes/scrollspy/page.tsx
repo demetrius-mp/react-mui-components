@@ -5,6 +5,7 @@ import { useScrollspy } from "@/hooks/use-scrollspy";
 import { useSetTitle } from "@/hooks/use-set-title";
 import { AppBarNavigation } from "@/ui/app-bar-navigation";
 import { AppBottomNavigation } from "@/ui/app-bottom-navigation";
+import { AppFooter } from "@/ui/app-footer";
 import { AppSpotNavigation } from "@/ui/app-spot-navigation";
 import { HighlightsSwiper } from "@/ui/highlights-swiper";
 
@@ -104,7 +105,7 @@ function HomePageTabsContent({
         </Tabs>
       </Box>
 
-      <Stack px={3} mt={4} pb={4} gap={4} className="spy-section-wrapper">
+      <Stack px={3} mt={4} gap={4} className="spy-section-wrapper">
         {tabs.map((tab, index) => (
           <Box
             ref={(el: Element) => {
@@ -156,8 +157,12 @@ export function ScrollspyPage() {
         </Container>
       </Box>
 
-      <Box pb="55px">
+      <Box pb="84px">
         <HomePageTabsContent tabs={tabs} />
+
+        <Box mt={4} mx={3}>
+          <AppFooter />
+        </Box>
       </Box>
 
       <AppBottomNavigation />

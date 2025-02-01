@@ -9,12 +9,25 @@ export const theme = createTheme({
   components: {
     MuiContainer: {
       defaultProps: {
-        maxWidth: "lg",
-        sx: {
-          p: "0 !important",
+        disableGutters: true,
+      },
+    },
+
+    MuiLink: {
+      defaultProps: {
+        sx: ({ palette }) => {
+          return {
+            color: palette.text.primary,
+            textDecorationColor: palette.text.primary,
+            "&:hover": {
+              color: palette.text.primary,
+              textDecorationColor: palette.primary.main,
+            },
+          };
         },
       },
     },
+
     MuiTab: {
       defaultProps: {
         sx: {
@@ -29,42 +42,45 @@ export const theme = createTheme({
         },
       },
     },
+
     MuiTabs: {
       defaultProps: {
         TabIndicatorProps: {
           children: <span className="MuiTabs-indicatorSpan" />,
         },
-        sx: {
-          minHeight: "unset",
-          position: "relative",
-          borderBottom: ({ palette }) => `1px solid ${palette.divider}`,
+        sx: ({ palette }) => {
+          return {
+            minHeight: "unset",
+            position: "relative",
+            borderBottom: `1px solid ${palette.divider}`,
 
-          "& .MuiTabs-scrollButtons": {
-            transition: "all 0.3s ease",
-            width: "unset",
-            position: "absolute",
-            zIndex: 1000,
-            top: "50%",
-            transform: "translateY(-50%)",
-            backgroundColor: ({ palette }) => palette.background.default,
-            "&:first-of-type": {
-              left: "0px",
+            "& .MuiTabs-scrollButtons": {
+              transition: "all 0.3s ease",
+              width: "unset",
+              position: "absolute",
+              zIndex: 1000,
+              top: "50%",
+              transform: "translateY(-50%)",
+              backgroundColor: palette.background.default,
+              "&:first-of-type": {
+                left: "0px",
+              },
+              "&:last-of-type": {
+                right: "0px",
+              },
             },
-            "&:last-of-type": {
-              right: "0px",
+
+            [`& .${tabsClasses.indicator}`]: {
+              backgroundColor: "transparent",
             },
-          },
 
-          [`& .${tabsClasses.indicator}`]: {
-            backgroundColor: "transparent",
-          },
-
-          "& .MuiTabs-indicatorSpan": {
-            backgroundColor: ({ palette }) => palette.primary.main,
-            marginX: `${MuiTabItemPaddingX}px`,
-            height: "10px",
-            display: "block",
-          },
+            "& .MuiTabs-indicatorSpan": {
+              backgroundColor: palette.primary.main,
+              marginX: `${MuiTabItemPaddingX}px`,
+              height: "10px",
+              display: "block",
+            },
+          };
         },
       },
     },
