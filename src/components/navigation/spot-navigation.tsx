@@ -1,6 +1,8 @@
 import { Box, Stack, Typography, useTheme } from "@mui/material";
 import { ReactNode } from "react";
 
+import { useClickableElement } from "@/hooks/use-focusable-element";
+
 export function SpotNavigation({ children }: { children: ReactNode }) {
   return (
     <Stack
@@ -27,9 +29,11 @@ export function SpotNavigationItem({
   onClick?: () => void;
 }) {
   const { palette } = useTheme();
+  const ref = useClickableElement<HTMLDivElement>();
 
   return (
     <Stack
+      ref={ref}
       width={56}
       alignItems="center"
       role="button"

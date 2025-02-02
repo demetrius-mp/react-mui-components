@@ -12,6 +12,9 @@ export function AppSpotNavigation() {
           key={index}
           label={`Item ${index + 1}`}
           icon={<img height={20} src={reactLogo} />}
+          onClick={() => {
+            console.log("clicked");
+          }}
         />
       ))}
     </SpotNavigation>
