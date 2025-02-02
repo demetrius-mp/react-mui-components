@@ -19,6 +19,8 @@ export function SpotNavigation({ children }: { children: ReactNode }) {
   );
 }
 
+const ITEM_WIDTH_IN_PX = 56;
+
 export function SpotNavigationItem({
   icon,
   label,
@@ -34,7 +36,7 @@ export function SpotNavigationItem({
   return (
     <Stack
       ref={ref}
-      width={56}
+      width={ITEM_WIDTH_IN_PX}
       alignItems="center"
       role="button"
       onClick={onClick}
@@ -60,13 +62,10 @@ export function SpotNavigationItem({
         fontSize={12}
         align="center"
         overflow="hidden"
-        width="100%"
+        width={ITEM_WIDTH_IN_PX}
         textOverflow="ellipsis"
         whiteSpace="nowrap"
         color={palette.background.default}
-        sx={{
-          width: "56px",
-        }}
       >
         {label}
       </Typography>
