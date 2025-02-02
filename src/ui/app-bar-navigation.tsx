@@ -25,7 +25,7 @@ export function AppBarNavigation() {
           startIcon={
             <img
               height={24}
-              src={getAssetUrl("logos:vitejs")}
+              src={getAssetUrl("app-assets:logo")}
               alt="Company logo"
             />
           }

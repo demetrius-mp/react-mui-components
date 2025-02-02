@@ -32,7 +32,7 @@ export function AuthBottomsheet() {
   return (
     <Bottomsheet open={isOpen} setOpen={setIsOpen}>
       <Stack alignItems="center" justifyContent="center" p={4}>
-        <img height={48} src={getAssetUrl("logos:vitejs")} />
+        <img height={48} src={getAssetUrl("app-assets:logo")} />
 
         <Stack mt={2}>
           <Typography

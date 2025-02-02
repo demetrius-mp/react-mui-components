@@ -10,6 +10,7 @@ import {
 
 import { Bottomsheet } from "@/components/bottomsheet";
 import { getProductById, PRODUCTS_IDS } from "@/constants/products";
+import { useClickableElement } from "@/hooks/use-focusable-element";
 import { useProductsBottomsheetIsOpenState } from "@/states/products-bottomsheet-is-open-state";
 import { useSelectedProductIdState } from "@/states/selected-product-state";
 
@@ -27,12 +28,14 @@ function ProductCard({
   onClick,
 }: ProductCardProps) {
   const { palette } = useTheme();
+  const ref = useClickableElement<HTMLDivElement>();
 
   const border = `2px solid ${selected ? alpha(palette.primary.light, 0.2) : palette.divider}`;
   const bgcolor = selected ? alpha(palette.primary.light, 0.2) : undefined;
 
   return (
     <Stack
+      ref={ref}
       sx={{
         cursor: "pointer",
       }}
